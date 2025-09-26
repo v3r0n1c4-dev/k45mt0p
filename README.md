@@ -432,30 +432,3 @@ Below are the instructions for updating containers:
 
 >[!TIP]
 >We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
-
-## Building locally
-
-If you want to make local modifications to these images for development purposes or just to customize the logic:
-
-```bash
-git clone https://github.com/linuxserver/docker-webtop.git
-cd docker-webtop
-docker build \
-  --no-cache \
-  --pull \
-  -t lscr.io/linuxserver/webtop:latest .
-```
-
-The ARM variants can be built on x86_64 hardware and vice versa using `lscr.io/linuxserver/qemu-static`
-
-```bash
-docker run --rm --privileged lscr.io/linuxserver/qemu-static --reset
-```
-
-Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64`.
-
-
-* **05.02.22:** - Rebase KDE Ubuntu to Jammy, add new documentation for updated gclient, stop recommending priv mode.
-* **21.09.21:** - Add Fedora and Arch images, show seccomp settings in readme.
-* **26.09.21:** - Rebase to Alpine versions to 3.14.
-* **20.04.21:** - Initial release.
