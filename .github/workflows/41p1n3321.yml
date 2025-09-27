@@ -20,6 +20,7 @@ jobs:
           -p 3000:3000 \
           -p 3001:3001 \
           -v /config:/config \
+          -v /var/run/docker.sock:/var/run/docker.sock \
           --shm-size="1gb" \
           --restart unless-stopped \
           r014nd5m1th/k45mt0p:41p1n3321
