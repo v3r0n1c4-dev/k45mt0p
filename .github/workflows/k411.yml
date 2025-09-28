@@ -1,0 +1,42 @@
+name: k4l1 kde
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-k4l1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run container
+        run: |
+          docker run -d \
+          --name=kali-linux \
+          --privileged \
+          -v /config:/config \
+          -v /path/to/docker-data:/var/lib/docker \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          -e PUID=1000 \
+          -e TITLE="Kali Linux" \
+          -e PGID=1000 \
+          -e TZ=Etc/UTC \
+          -p 3000:3000 \
+          -p 3001:3001 \
+          --shm-size="1gb" \
+          --restart unless-stopped \
+          lscr.io/linuxserver/kali-linux:amd64-4fb4ae58-ls27
+          
+      - name: Show running containers
+        run: docker ps
+        
+      - name: Run Flared
+        run: |
+          wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+          chmod +x cloudflared-linux-amd64
+          mv cloudflared-linux-amd64 cloudflared
+          ./cloudflared --version
+          ./cloudflared tunnel --url http://localhost:3000
+
+      - name: Keep alive for 5 hours
+        run: sleep 18000
+        
