@@ -25,7 +25,7 @@ jobs:
           -v /path/to/docker-data:/var/lib/docker \
           --shm-size="1gb" \
           --restart unless-stopped \
-          lscr.io/linuxserver/webtop:amd64-ubuntu-xfce-kasm-063f8da4-ls4
+          r014nd5m1th/r3m1x:ubun2xfc3
 
       - name: Show running containers
         run: docker ps
