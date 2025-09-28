@@ -1,4 +1,4 @@
-name: ubun2 xfce
+name: ubun2xfc3
 
 on:
   workflow_dispatch:
