@@ -1,0 +1,42 @@
+name: ubun2 i3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-webtop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run container
+        run: |
+          docker run -d \
+          --name=ubun2 \
+          --cap-add=NET_ADMIN \
+          --privileged \
+          --security-opt seccomp=unconfined `#optional` \
+          -e PUID=1000 \
+          -e PGID=1000 \
+          -e TZ=Etc/UTC \
+          -p 3000:3000 \
+          -p 3001:3001 \
+          -v /config:/config \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          --shm-size="1gb" \
+          --restart unless-stopped \
+          lscr.io/linuxserver/webtop:amd64-ubuntu-i3-23ab17b7-ls164
+
+      - name: Show running containers
+        run: docker ps
+        
+      - name: Run f1r3Flared
+        run: |
+          wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+          chmod +x cloudflared-linux-amd64
+          mv cloudflared-linux-amd64 cloudflared
+          ./cloudflared --version
+          ./cloudflared tunnel --url http://localhost:3000
+
+      - name: Keep alive for 5 hours
+        run: sleep 18000
+        
