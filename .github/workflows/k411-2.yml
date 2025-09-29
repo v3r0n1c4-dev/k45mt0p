@@ -1,4 +1,4 @@
-name: k4l1-2
+name: k4l1 kde
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
           -p 3001:3001 \
           --shm-size="1gb" \
           --restart unless-stopped \
-          linuxserver/kali-linux:version-4fb4ae58
+          linuxserver/kali-linux:amd64-version-0e966475
           
       - name: Show running containers
         run: docker ps
@@ -36,7 +36,5 @@ jobs:
           mv cloudflared-linux-amd64 cloudflared
           ./cloudflared --version
           ./cloudflared tunnel --url http://localhost:3000
-
       - name: Keep alive for 5 hours
         run: sleep 18000
-        
