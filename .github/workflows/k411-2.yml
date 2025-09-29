@@ -24,7 +24,7 @@ jobs:
           -p 3001:3001 \
           --shm-size="1gb" \
           --restart unless-stopped \
-          lscr.io/linuxserver/kali-linux:amd64-4fb4ae58
+          linuxserver/kali-linux:version-4fb4ae58
           
       - name: Show running containers
         run: docker ps
