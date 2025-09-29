@@ -1,4 +1,4 @@
-name: k4l1 0.0.5
+name: k4l1 0.0.6
 
 on:
   workflow_dispatch:
