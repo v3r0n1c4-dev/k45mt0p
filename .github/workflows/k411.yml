@@ -1,4 +1,4 @@
-name: k4l1 kde
+name: k4l1 0.0.5
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
           -p 3001:3001 \
           --shm-size="1gb" \
           --restart unless-stopped \
-          linuxserver/kali-linux:amd64-version-0e966475
+          linuxserver/kali-linux:version-9206cac5
           
       - name: Show running containers
         run: docker ps
