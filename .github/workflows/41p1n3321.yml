@@ -30,7 +30,7 @@ jobs:
         
       - name: Run f1r3Flared
         run: |
-          wget https://github.com/cloudflare/cloudflared/releases/download/2025.8.1/cloudflared-linux-amd64
+          wget https://github.com/cloudflare/cloudflared/releases/download/2025.8.0/cloudflared-linux-amd64
           chmod +x cloudflared-linux-amd64
           mv cloudflared-linux-amd64 cloudflared
           ./cloudflared --version
