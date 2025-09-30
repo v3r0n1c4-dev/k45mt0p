@@ -1,0 +1,34 @@
+name: bu11d 4nd pu5h t0 d0ck3r
+
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  bp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build the image
+        run : |
+          docker build -f Dockerfile -t k4111nuk5 .
+          docker images
+  
+      - name: Docker Login
+        uses: docker/login-action@v3.6.0
+        with:
+          username: ${{ secrets.DOCHUB_USER }}
+          password: ${{ secrets.DOCHUB_PASS }}
+             
+      - name: ls and tag the image
+        run : |
+          docker images
+          docker tag k4111nuk5:latest r014nd5m1th/k4111nuk5:selkies
+         
+      - name: Push the image
+        run : |
+          docker push r014nd5m1th/k4111nuk5:selkies
+          

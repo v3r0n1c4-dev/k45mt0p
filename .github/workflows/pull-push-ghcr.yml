@@ -1,0 +1,27 @@
+name: pull & push ghcr
+
+on:
+  workflow_dispatch:
+
+jobs:
+  k45mt0p:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login and pull the image
+        run : |
+          docker login --username b3h1m0th --password ${{ secrets.GHCR }} ghcr.io
+          docker run -d \
+          --name=1m4g3 \
+          linuxserver/kali-linux:version-f15aba91
+          
+      - name: ls commit and tag the image
+        run : |
+          docker images
+          docker commit 1m4g3 rem1x:1m4g3
+          docker tag rem1x:1m4g3 ghcr.io/b3h1m0th/k411:f15aba91
+         
+      - name: Push the image
+        run : |
+          docker push ghcr.io/b3h1m0th/k411:f15aba91
