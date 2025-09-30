@@ -1,4 +1,4 @@
-name: deb 3
+name: deb 4
 
 on:
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
           -v /path/to/docker-data:/var/lib/docker \
           --shm-size="1gb" \
           --restart unless-stopped \
-          ghcr.io/b3h1m0th/r3m1x:deb
+          r014nd5m1th/k45mt0p:deb
 
       - name: Show running containers
         run: docker ps
