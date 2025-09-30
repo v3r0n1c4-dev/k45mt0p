@@ -1,4 +1,4 @@
-name: k4l1-version-53183484
+name: k4l1-version-f15aba91
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
           -p 3001:3001 \
           --shm-size="1gb" \
           --restart unless-stopped \
-          linuxserver/kali-linux:version-53183484
+          linuxserver/kali-linux:version-f15aba91
           
       - name: Show running containers
         run: docker ps
