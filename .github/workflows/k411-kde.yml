@@ -1,4 +1,4 @@
-name: ubun2kde
+name: k411-kde
 
 on:
   workflow_dispatch:
