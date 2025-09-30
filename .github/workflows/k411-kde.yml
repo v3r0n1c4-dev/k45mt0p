@@ -11,7 +11,7 @@ jobs:
       - name: Run container
         run: |
           docker run -d \
-          --name=ubun2 \
+          --name=k411 \
           --cap-add=NET_ADMIN \
           --privileged \
           --security-opt seccomp=unconfined `#optional` \
@@ -25,7 +25,7 @@ jobs:
           -v /path/to/docker-data:/var/lib/docker \
           --shm-size="1gb" \
           --restart unless-stopped \
-          ghcr.io/b3h1m0th/ubun2:ub
+          ghcr.io/b3h1m0th/k411:f15aba91
 
       - name: Show running containers
         run: docker ps
