@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-k45mt0p:
+  k45mt0p:
     runs-on: ubuntu-latest
 
     steps:
       - name: Run container
         run: |
           docker run -d \
-          --name=webtop \
+          --name=k45mt0p \
           --cap-add=NET_ADMIN \
           --privileged \
           --security-opt seccomp=unconfined `#optional` \
