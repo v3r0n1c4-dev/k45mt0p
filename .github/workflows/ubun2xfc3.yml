@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-k45mt0p:
+  k45mt0p:
     runs-on: ubuntu-latest
 
     steps:
       - name: Run container
         run: |
           docker run -d \
-          --name=webtop \
+          --name=k45mt0p \
           --cap-add=NET_ADMIN \
           --privileged \
           --security-opt seccomp=unconfined `#optional` \
@@ -25,7 +25,7 @@ jobs:
           -v /path/to/docker-data:/var/lib/docker \
           --shm-size="1gb" \
           --restart unless-stopped \
-          r014nd5m1th/r3m1x:ubun2xfc3
+          r014nd5m1th/k45mt0p:ubun2xfc3
 
       - name: Show running containers
         run: docker ps
